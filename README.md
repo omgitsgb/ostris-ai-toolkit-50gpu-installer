@@ -130,3 +130,86 @@ pip install -r requirements.txt
 
 8. **Install all other dependencies listed in `requirements.txt`:**  
    Installs all packages needed by `ai-toolkit`.
+
+# Original Install Instructions
+The installer has you doing.
+```
+git clone https://github.com/ostris/ai-toolkit.git
+cd ai-toolkit
+python -m venv venv
+.\venv\Scripts\activate
+pip install --no-cache-dir torch==2.6.0 torchvision==0.21.0 --index-url https://download.pytorch.org/whl/cu126
+pip install -r requirements.txt
+```
+- This is from the Ostris-ai-toolkit Install Page
+
+# Git Clone the toolkit and go into.
+```
+git clone https://github.com/ostris/ai-toolkit.git
+cd ai-toolkit
+```
+
+# Make an enviroment from Python 3.12 and activate it
+```
+py -3.12 -m venv venv
+
+.\venv\Scripts\activate
+```
+# Get the Proper setuptools, Torch, Torchvision and Cuda
+```
+python -m pip install --upgrade pip setuptools==80.9.0 wheel
+
+pip install --no-cache-dir torch==2.7.1+cu128 torchvision==0.22.1+cu128 --index-url https://download.pytorch.org/whl/cu128
+
+```
+# Install the Proper requirements for it to work.
+
+We want to make sure we have setuptools==80.9.0 wheel and then install torch==2.7.1+cu128 torchvision==0.22.1+cu128 --index-url https://download.pytorch.org/whl/cu128
+
+The requirements.txt is still the same one from before if we just run the commands regularly, and overwite some of the stuff we need, so we are tossing out the old one and replacing it with the stuff we need.
+
+```
+pip install -r requirements.txt
+```
+# The Patched Requirments are
+```
+torchao==0.9.0
+safetensors==0.5.3
+git+https://github.com/jaretburkett/easy_dwpose.git
+git+https://github.com/huggingface/diffusers@363d1ab7e24c5ed6c190abb00df66d9edb74383b
+transformers==4.52.4
+lycoris-lora==1.8.3
+flatten_json==0.1.14
+pyyaml==6.0.2
+oyaml==1.0
+tensorboard==2.19.0
+kornia==0.8.1
+invisible-watermark==0.2.0
+einops==0.8.1
+accelerate==1.7.0
+toml==0.10.2
+albumentations==1.4.15
+albucore==0.0.16
+pydantic==2.11.5
+omegaconf==2.3.0
+k-diffusion==0.1.1.post1
+open_clip_torch==2.32.0
+timm==1.0.15
+prodigyopt==1.1.2
+controlnet_aux==0.0.10
+python-dotenv==1.1.0
+bitsandbytes==0.46.0
+hf_transfer==0.1.9
+lpips==0.1.4
+pytorch_fid==0.3.0
+optimum-quanto==0.2.4
+sentencepiece==0.2.0
+huggingface_hub==0.32.6
+peft==0.15.2
+gradio==5.33.1
+python-slugify==8.0.4
+opencv-python==4.11.0.86
+pytorch-wavelets==1.3.0
+matplotlib==3.10.1
+triton-windows==3.3.1.post19
+```
