@@ -28,49 +28,102 @@
 
 ---
 
-## 🗂 What the script does
+## 🗂 What the script does (Step-by-step breakdown)
 
-The script will:
+The batch file performs the following actions:
 
-1. Clone the latest `ai-toolkit` repository from GitHub  
-2. Delete the existing `requirements.txt` (if any) and create a new one with pinned dependencies  
-3. Create and activate a Python 3.12 virtual environment (`venv`)  
-4. Upgrade `pip`, install `setuptools` and `wheel`  
-5. Install PyTorch 2.7.1 + CUDA 12.8 and all other required packages from the custom `requirements.txt`  
-6. Prepare the environment to run ComfyUI workflows optimized for RTX 50-series GPUs
+1. **Clone the `ai-toolkit` repository:**  
+   ```bat
+   git clone https://github.com/ostris/ai-toolkit.git
+   cd ai-toolkit
+1. **Clone the `ai-toolkit` repository:**  
+   ```bat
+   git clone https://github.com/ostris/ai-toolkit.git
+   cd ai-toolkit
+   ```  
+   This downloads the latest project files and changes into the folder.
+
+2. **Delete the existing `requirements.txt` file if present:**  
+   ```bat
+   if exist requirements.txt del requirements.txt
+   ```  
+   Ensures no old dependencies remain.
+
+3. **Create a new `requirements.txt` file:**  
+   ```bat
+   (
+   echo torchao==0.9.0
+   echo safetensors==0.5.3
+   echo git+https://github.com/jaretburkett/easy_dwpose.git
+   echo git+https://github.com/huggingface/diffusers@363d1ab7e24c5ed6c190abb00df66d9edb74383b
+   echo transformers==4.52.4
+   echo lycoris-lora==1.8.3
+   echo flatten_json==0.1.14
+   echo pyyaml==6.0.2
+   echo oyaml==1.0
+   echo tensorboard==2.19.0
+   echo kornia==0.8.1
+   echo invisible-watermark==0.2.0
+   echo einops==0.8.1
+   echo accelerate==1.7.0
+   echo toml==0.10.2
+   echo albumentations==1.4.15
+   echo albucore==0.0.16
+   echo pydantic==2.11.5
+   echo omegaconf==2.3.0
+   echo k-diffusion==0.1.1.post1
+   echo open_clip_torch==2.32.0
+   echo timm==1.0.15
+   echo prodigyopt==1.1.2
+   echo controlnet_aux==0.0.10
+   echo python-dotenv==1.1.0
+   echo bitsandbytes==0.46.0
+   echo hf_transfer==0.1.9
+   echo lpips==0.1.4
+   echo pytorch_fid==0.3.0
+   echo optimum-quanto==0.2.4
+   echo sentencepiece==0.2.0
+   echo huggingface_hub==0.32.6
+   echo peft==0.15.2
+   echo gradio==5.33.1
+   echo python-slugify==8.0.4
+   echo opencv-python==4.11.0.86
+   echo pytorch-wavelets==1.3.0
+   echo matplotlib==3.10.1
+   echo triton-windows==3.3.1.post19
+   ) > requirements.txt
+   ```  
+   Writes the full list of pinned dependencies optimized for RTX 50-series GPUs.
+
+4. **Create a Python 3.12 virtual environment:**  
+   ```bat
+   py -3.12 -m venv venv
+   ```  
+   Sets up an isolated Python environment inside the project folder.
+
+5. **Activate the virtual environment:**  
+   ```bat
+   call .\venv\Scripts\activate
+   ```  
+   Ensures subsequent Python commands use the venv's interpreter and packages.
+
+6. **Upgrade pip and install setuptools and wheel:**  
+   ```bat
+   python -m pip install --upgrade pip setuptools==80.9.0 wheel
+   ```  
+   Prepares the package installer for the dependencies.
+
+7. **Install PyTorch and torchvision with CUDA 12.8 support:**  
+   ```bat
+   pip install --no-cache-dir torch==2.7.1+cu128 torchvision==0.22.1+cu128 --index-url https://download.pytorch.org/whl/cu128
+   ```  
+   Installs the GPU-accelerated deep learning framework.
+
+8. **Install all other required dependencies:**  
+   ```bat
+   pip install -r requirements.txt
+   ```  
+   Installs the rest of the packages needed to run `ai-toolkit`.
+```
 
 ---
-
-## 📦 Installed dependencies
-
-- `torch==2.7.1+cu128` (PyTorch with CUDA 12.8)  
-- `torchvision==0.22.1+cu128`  
-- `torchao==0.9.0`  
-- `triton-windows==3.3.1.post19`  
-- `transformers==4.52.4`  
-- `diffusers` (pinned commit)  
-- `lycoris-lora==1.8.3`  
-- `huggingface_hub==0.32.6`  
-- `controlnet_aux==0.0.10`  
-- and many others tailored for 50-series hardware
-
-*For the full list, see the generated `requirements.txt`.*
-
----
-
-## 📖 Additional Notes
-
-- This installer assumes you have **Git** installed and accessible via the command line.  
-- The `.bat` file is designed for Windows. For other OSes, you will need to adapt the script accordingly.  
-- Python **must** be installed beforehand (version 3.12 recommended). You can download it [here](https://www.python.org/downloads/release/python-3123/).
-
----
-
-## 🔗 Links
-
-- [Python 3.12 Windows installer](https://www.python.org/ftp/python/3.12.3/python-3.12.3-amd64.exe)  
-- [ostris/ai-toolkit GitHub repository](https://github.com/ostris/ai-toolkit)  
-
----
-
-Feel free to open issues or submit pull requests for improvements!
