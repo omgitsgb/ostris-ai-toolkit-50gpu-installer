@@ -130,6 +130,7 @@ pip install -r requirements.txt
 
 8. **Install all other dependencies listed in `requirements.txt`:**  
    Installs all packages needed by `ai-toolkit`.
+---
 
 # Original Install Instructions
 The installer has you doing.
