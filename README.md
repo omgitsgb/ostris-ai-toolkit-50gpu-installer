@@ -1,11 +1,6 @@
-Got it! Here's your **full README content** properly styled and formatted for GitHub, including the batch code block inside a fenced code block and the step-by-step breakdown nicely formatted — ready to copy-paste and upload:
-
----
-
-```markdown
 # ai-toolkit-50series-installer
 
-**Batch-based installer for [`ostris/ai-toolkit`](https://github.com/ostris/ai-toolkit)** — sets up a Python 3.12 virtual environment, installs PyTorch 2.7.1 with CUDA 12.8, Triton, and all required dependencies.
+Batch-based installer for [`ostris/ai-toolkit`](https://github.com/ostris/ai-toolkit) — sets up a Python 3.12 virtual environment, installs PyTorch 2.7.1 with CUDA 12.8, Triton, and all required dependencies.
 
 ✅ Optimized for NVIDIA **RTX 50-series GPUs**  
 ⚙️ Includes installation of **Triton**, **torchao**, and other compatible libraries  
@@ -13,7 +8,7 @@ Got it! Here's your **full README content** properly styled and formatted for Gi
 
 ---
 
-## 🔧 Requirements
+## Requirements
 
 - NVIDIA RTX 50-series GPU  
 - Windows (recommended)  
@@ -22,18 +17,18 @@ Got it! Here's your **full README content** properly styled and formatted for Gi
 
 ---
 
-## 🚀 Quick Setup
+## Quick Setup
 
 1. Download and install [Python 3.12 (Windows installer)](https://www.python.org/ftp/python/3.12.3/python-3.12.3-amd64.exe)  
    - **Important:** Make sure to check **"Add Python to PATH"** during installation.
 
-2. Download or copy the contents of [`setup_ai_toolkit_50series.bat`](setup_ai_toolkit_50series.bat) into the folder where you'd like to install `ai-toolkit`.
+2. Download or copy the contents of `setup_ai_toolkit_50series.bat` into the folder where you'd like to install `ai-toolkit`.
 
 3. Run the `.bat` file by **double-clicking it** or executing it in a Command Prompt.
 
 ---
 
-## 📝 Batch Script (`setup_ai_toolkit_50series.bat`)
+## Batch File Code (`setup_ai_toolkit_50series.bat`)
 
 ```bat
 @echo off
@@ -101,66 +96,3 @@ pip install --no-cache-dir torch==2.7.1+cu128 torchvision==0.22.1+cu128 --index-
 
 REM Install requirements
 pip install -r requirements.txt
-```
-
----
-
-## 🗂 What the script does (Step-by-step breakdown)
-
-1. **Clone the `ai-toolkit` repository:**  
-   ```bat
-   git clone https://github.com/ostris/ai-toolkit.git
-   cd ai-toolkit
-   ```  
-   Downloads the latest project files and enters the repository folder.
-
-2. **Delete the existing `requirements.txt` if present:**  
-   ```bat
-   if exist requirements.txt del requirements.txt
-   ```  
-   Removes any old dependency files to avoid conflicts.
-
-3. **Create a new `requirements.txt` with pinned dependencies:**  
-   ```bat
-   (
-   echo torchao==0.9.0
-   echo safetensors==0.5.3
-   ...
-   echo triton-windows==3.3.1.post19
-   ) > requirements.txt
-   ```  
-   Writes the exact package versions optimized for RTX 50-series GPUs, including Triton.
-
-4. **Create a Python 3.12 virtual environment:**  
-   ```bat
-   py -3.12 -m venv venv
-   ```  
-   Sets up an isolated environment so package installs do not affect your system Python.
-
-5. **Activate the virtual environment:**  
-   ```bat
-   call .\venv\Scripts\activate
-   ```  
-   Ensures Python commands run inside the virtual environment.
-
-6. **Upgrade pip, setuptools, and install wheel:**  
-   ```bat
-   python -m pip install --upgrade pip setuptools==80.9.0 wheel
-   ```  
-   Prepares the package manager for reliable installs.
-
-7. **Install PyTorch and torchvision with CUDA 12.8 support:**  
-   ```bat
-   pip install --no-cache-dir torch==2.7.1+cu128 torchvision==0.22.1+cu128 --index-url https://download.pytorch.org/whl/cu128
-   ```  
-   Installs GPU-accelerated deep learning libraries compatible with your hardware.
-
-8. **Install all other required dependencies:**  
-   ```bat
-   pip install -r requirements.txt
-   ```  
-   Installs everything else needed by `ai-toolkit` for full functionality.
-
----
-
-If you need the batch file prepared for download or want me to help with anything else, just ask!
