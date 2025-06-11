@@ -39,8 +39,8 @@ Batch-based installer for [`ostris/ai-toolkit`](https://github.com/ostris/ai-too
 ---
 
 ## Batch File Code (`setup_ai_toolkit_50series.bat`)
-
-```bat
+If you dont want to download the Bat, you can just copy and past this into a notepad. It will do everything for you.
+```
 @echo off
 REM Clone repo and enter folder
 git clone https://github.com/ostris/ai-toolkit.git
@@ -49,7 +49,7 @@ cd ai-toolkit
 REM Delete existing requirements.txt if it exists
 if exist requirements.txt del requirements.txt
 
-REM Create new requirements.txt with the required dependencies
+REM Create new requirements.txt with your list
 (
 echo torchao==0.9.0
 echo safetensors==0.5.3
@@ -106,6 +106,7 @@ pip install --no-cache-dir torch==2.7.1+cu128 torchvision==0.22.1+cu128 --index-
 
 REM Install requirements
 pip install -r requirements.txt
+
 ```
 1. **Clone the `ai-toolkit` repository and enter its directory:**  
    Downloads the latest project files from GitHub.
@@ -131,7 +132,8 @@ pip install -r requirements.txt
 8. **Install all other dependencies listed in `requirements.txt`:**  
    Installs all packages needed by `ai-toolkit`.
 ---
-
+# Past this point is just more breakdown or if you want to do it manually feel free to.
+---
 # Original Install Instructions
 The installer has you doing.
 ```
@@ -144,34 +146,36 @@ pip install -r requirements.txt
 ```
 - This is from the Ostris-ai-toolkit Install Page
 
+# Breakdown of the Code 
+If you want to do it all manually here is a break down of what we are doing.
 # Git Clone the toolkit and go into.
 ```
 git clone https://github.com/ostris/ai-toolkit.git
 cd ai-toolkit
 ```
-
+- We want to get the github and CD into the folder we put it in.
 # Make an enviroment from Python 3.12 and activate it
 ```
 py -3.12 -m venv venv
 
 .\venv\Scripts\activate
 ```
-# Get the Proper setuptools, Torch, Torchvision and Cuda
+- We want to make sure we are making an enviroment in Python 3.12
+- We are activating the enviroment we make.
+
+# Get setuptools, Torch, Torchvision and Cuda
 ```
 python -m pip install --upgrade pip setuptools==80.9.0 wheel
 
 pip install --no-cache-dir torch==2.7.1+cu128 torchvision==0.22.1+cu128 --index-url https://download.pytorch.org/whl/cu128
 
 ```
+- We are getting the setuptools so we can build wheels and set everything up properly.
+- We are getting the proper Torch, Torchvision and Cuda that works on 50+ series.
+
 # Install the Proper requirements for it to work.
+We want to patch the requirements since the 50 series and everything so far, needs things that are compatible.
 
-We want to make sure we have setuptools==80.9.0 wheel and then install torch==2.7.1+cu128 torchvision==0.22.1+cu128 --index-url https://download.pytorch.org/whl/cu128
-
-The requirements.txt is still the same one from before if we just run the commands regularly, and overwite some of the stuff we need, so we are tossing out the old one and replacing it with the stuff we need.
-
-```
-pip install -r requirements.txt
-```
 # The Patched Requirments are
 ```
 torchao==0.9.0
@@ -214,3 +218,9 @@ pytorch-wavelets==1.3.0
 matplotlib==3.10.1
 triton-windows==3.3.1.post19
 ```
+ # We are installing from the requirements
+```
+pip install -r requirements.txt
+```
+---
+ # Hope this helps someone! :) I just wanted to make someones life easier. 
