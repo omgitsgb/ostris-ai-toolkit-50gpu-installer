@@ -1,3 +1,13 @@
+
+---
+
+## Note
+
+I made this installer because the base instructions were not working on my computer, and I figured I could probably just replace everything. It ended up working, so I decided to share this on GitHub.  
+This is a one-button-click installer for anyone with an NVIDIA RTX 50-series GPU.
+
+---
+
 # ai-toolkit-50series-installer
 
 Batch-based installer for [`ostris/ai-toolkit`](https://github.com/ostris/ai-toolkit) — sets up a Python 3.12 virtual environment, installs PyTorch 2.7.1 with CUDA 12.8, Triton, and all required dependencies.
