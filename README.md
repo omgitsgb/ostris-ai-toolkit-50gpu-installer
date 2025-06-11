@@ -96,3 +96,27 @@ pip install --no-cache-dir torch==2.7.1+cu128 torchvision==0.22.1+cu128 --index-
 
 REM Install requirements
 pip install -r requirements.txt
+```
+1. **Clone the `ai-toolkit` repository and enter its directory:**  
+   Downloads the latest project files from GitHub.
+
+2. **Delete any existing `requirements.txt` file:**  
+   Removes old dependency listings to avoid conflicts.
+
+3. **Create a new `requirements.txt` file:**  
+   Writes a pinned list of dependencies optimized for RTX 50-series GPUs including Triton and torchao.
+
+4. **Create a Python 3.12 virtual environment:**  
+   Sets up an isolated environment inside the folder called `venv`.
+
+5. **Activate the virtual environment:**  
+   Makes sure all Python commands run inside the venv.
+
+6. **Upgrade pip, setuptools, and install wheel:**  
+   Ensures the package manager and build tools are up to date.
+
+7. **Install PyTorch and torchvision with CUDA 12.8 support:**  
+   Installs GPU-accelerated deep learning frameworks.
+
+8. **Install all other dependencies listed in `requirements.txt`:**  
+   Installs all packages needed by `ai-toolkit`.
