@@ -222,5 +222,30 @@ triton-windows==3.3.1.post19
 ```
 pip install -r requirements.txt
 ```
+ # We are installing from the requirements
+Run the program
+In your ai-toolkit, for me its C:\AI\ai-toolkit, we are going to our navigation bar, typing CMD so we are now in the folder in the command prompt. 
+it should say.
+```
+Microsoft Windows [Version 10.0.26100.4061]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\AI\ai-toolkit>
+```
+
+ # Activate enviroment
+```
+.\venv\Scripts\activate
+```
+ # IMPORTANT:
+If anything is wrong with your setup, at this point before going into the UI and running it, is when you would fix whatever errors you have. At this point you can run Pip commands with the enviroment active.
+
+
+ # CD into the UI and Run
+```
+cd ui
+npm run build_and_start
+```
+If everything works right, it should give you a local IP as well as a Network IP.  Copy and paste into a browser window.
 ---
  # Hope this helps someone! :) I just wanted to make someones life easier. 
