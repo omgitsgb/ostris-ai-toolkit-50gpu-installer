@@ -71,6 +71,7 @@ echo albucore==0.0.16
 echo pydantic==2.11.5
 echo omegaconf==2.3.0
 echo k-diffusion==0.1.1.post1
+echo diffusers
 echo open_clip_torch==2.32.0
 echo timm==1.0.15
 echo prodigyopt==1.1.2
