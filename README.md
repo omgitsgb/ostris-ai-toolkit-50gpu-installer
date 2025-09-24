@@ -10,39 +10,45 @@ This is a one-button-click installer for anyone with an NVIDIA RTX 50-series GPU
 
 # ai-toolkit-50series-installer
 
-Batch-based installer for [`ostris/ai-toolkit`](https://github.com/ostris/ai-toolkit) — sets up a Python 3.12 virtual environment, installs PyTorch 2.7.1 with CUDA 12.8, Triton, and all required dependencies.
+Batch-based installer for ostris/ai-toolkit
+ — sets up a Python 3.12 virtual environment, installs PyTorch 2.7.1 with CUDA 12.8, Triton, and all required dependencies.
 
-✅ Optimized for NVIDIA **RTX 50-series GPUs**  
-⚙️ Includes installation of **Triton**, **torchao**, and other compatible libraries  
-🧪 Automatically pulls the latest `ai-toolkit` repo and sets it up in one go
-
+✅ Optimized for NVIDIA RTX 50-series GPUs
+⚙️ Includes installation of Triton, torchao, and other compatible libraries
+🧪 Automatically pulls the latest ai-toolkit repo and sets it up in one go
+🚀 Creates Start_training.bat automatically so you can start the UI with one click
 ---
 
 ## Requirements
 
-- NVIDIA RTX 50-series GPU  
-- Windows (recommended)  
-- Python 3.12 (you **must** install it **before** running the `.bat` file)  
-- Git installed and available in your system `PATH`
+NVIDIA RTX 50-series GPU
+
+Windows (recommended)
+
+Python 3.12 (you must install it before running the .bat file)
+
+Git installed and available in your system PATH
 
 ---
 
 ## Quick Setup (Recommended)
 
 1. Download and install [Python 3.12 (Windows installer)](https://www.python.org/ftp/python/3.12.3/python-3.12.3-amd64.exe)  
-   - **Important:** Make sure to check **"Add Python to PATH"** during installation.
+   - **Important:** Make sure to check "Add Python to PATH" during installation.
 
-2. Download or copy the contents of `setup_ai_toolkit_50series.bat` into the folder where you'd like to install `ai-toolkit`.
+Download or copy the contents of setup_ai_toolkit_50series.bat into the folder where you'd like to install ai-toolkit.
 
-3. Double-click the .bat file or run it in Command Prompt.
+Double-click the .bat file or run it in Command Prompt.
 
-- The script automatically:
+The script automatically:
 
-- Clones the ai-toolkit repository
+Clones the ai-toolkit repository
 
-- Creates and activates a Python 3.12 virtual environment
+Creates and activates a Python 3.12 virtual environment
 
-- Installs PyTorch 2.7.1 + CUDA 12.8, Triton, torchao, and all other dependencies
+Installs PyTorch 2.7.1 + CUDA 12.8, Triton, torchao, and all other dependencies
+
+Creates Start_training.bat inside the folder so you can start the UI easily
 
 Once complete, your environment is ready.
 
@@ -197,20 +203,57 @@ Microsoft Windows [Version 10.0.26100.4061]
 
 C:\AI\ai-toolkit>
 ```
+ # Lastly we are creating a Start_training.bat to make it easier to start the training and a completed message.
+```
+REM Create Start_training.bat in the same folder
+(
+echo @echo off
+echo call .\venv\Scripts\activate.bat
+echo cd ui
+echo npm run build_and_start
+echo pause
+ ) > Start_training.bat
 
- # Activate enviroment
+echo.
+echo Setup complete! You can now run Start_training.bat to start training.
+pause
 ```
-.\venv\Scripts\activate
-```
+
+
  # IMPORTANT:
 If anything is wrong with your setup, at this point before going into the UI and running it, is when you would fix whatever errors you have. At this point you can run Pip commands with the enviroment active.
-
 
  # CD into the UI and Run
 ```
 cd ui
 npm run build_and_start
 ```
+Or, simply run the automatically created batch file:
+```
+Start_training.bat
+```
+This batch file is automatically created by the installer and will:
+
+1. Activate your Python virtual environment (venv)
+
+2. Navigate to the ui folder
+
+3. Run the build/start command (npm run build_and_start)
+
+4. Pause the terminal so you can see any messages
+
+✅ This makes it a true one-click start — no need to manually activate the environment or navigate folders.
 If everything works right, it should give you a local IP as well as a Network IP.  Copy and paste into a browser window.
+
+ # Notes
+
+The batch file replaces any existing requirements.txt with a version compatible with RTX 50-series GPUs.
+
+Activate your virtual environment anytime you want to run the toolkit manually:
+```
+.\venv\Scripts\activate
+```
+If you encounter errors, fix them before launching the UI. Pip commands can be run with the environment active.
+
 ---
  # Hope this helps someone! :) I just wanted to make someones life easier. 
