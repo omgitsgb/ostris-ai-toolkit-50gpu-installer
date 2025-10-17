@@ -60,7 +60,8 @@ REM Upgrade pip and setuptools, install wheel
 python -m pip install --upgrade pip setuptools==80.9.0 wheel
 
 REM Install torch and torchvision from CUDA 12.8 index
-pip install --no-cache-dir torch==2.7.1+cu128 torchvision==0.22.1+cu128 --index-url https://download.pytorch.org/whl/cu128
+pip install --no-cache-dir torch==2.7.1+cu128 torchvision==0.22.1+cu128 torchaudio==2.7.1+cu128 --index-url https://download.pytorch.org/whl/cu128
 
 REM Install requirements
 pip install -r requirements.txt
+
