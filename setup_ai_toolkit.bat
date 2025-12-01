@@ -1,6 +1,6 @@
 @echo off
 REM ============================
-REM AI-Toolkit Installer (Final)
+REM AI-Toolkit Installer 
 REM ============================
 
 REM Clone repo and enter folder
@@ -90,3 +90,4 @@ echo Please feel free to follow me on Instagram: omgitsgb, YouTube, and LinkedIn
 echo https://www.linkedin.com/in/giancarlo-bellino-02a2292a5/
 echo.
 pause
+
