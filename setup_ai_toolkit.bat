@@ -1,6 +1,6 @@
 @echo off
 REM ============================
-REM AI-Toolkit Installer 
+REM AI-Toolkit Installer (Final)
 REM ============================
 
 REM Clone repo and enter folder
@@ -59,8 +59,8 @@ py -3.12 -m venv venv
 REM Activate virtual environment
 call .\venv\Scripts\activate
 
-REM Upgrade pip and wheel
-python -m pip install --upgrade pip wheel
+REM Upgrade pip and setuptools, install wheel
+python -m pip install --upgrade pip setuptools==80.9.0 wheel
 
 REM Install torch, torchvision, torchaudio with CUDA 12.8 support
 pip install --no-cache-dir torch==2.7.1+cu128 torchvision==0.22.1+cu128 torchaudio==2.7.1+cu128 --index-url https://download.pytorch.org/whl/cu128
@@ -90,4 +90,3 @@ echo Please feel free to follow me on Instagram: omgitsgb, YouTube, and LinkedIn
 echo https://www.linkedin.com/in/giancarlo-bellino-02a2292a5/
 echo.
 pause
-
