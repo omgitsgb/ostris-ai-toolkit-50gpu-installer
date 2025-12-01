@@ -153,45 +153,45 @@ We want to delete and make a new requirements since the 50 series and everything
 
 # The Patched Requirments are
 ```
-torchao==0.9.0
-safetensors==0.5.3
-git+https://github.com/jaretburkett/easy_dwpose.git
-git+https://github.com/huggingface/diffusers@363d1ab7e24c5ed6c190abb00df66d9edb74383b
-transformers==4.52.4
-lycoris-lora==1.8.3
-flatten_json==0.1.14
-pyyaml==6.0.2
-oyaml==1.0
-tensorboard==2.19.0
-kornia==0.8.1
-invisible-watermark==0.2.0
-einops==0.8.1
-accelerate==1.7.0
-toml==0.10.2
-albumentations==1.4.15
-albucore==0.0.16
-pydantic==2.11.5
-omegaconf==2.3.0
-k-diffusion==0.1.1.post1
-open_clip_torch==2.32.0
-timm==1.0.15
-prodigyopt==1.1.2
-controlnet_aux==0.0.10
-python-dotenv==1.1.0
-bitsandbytes==0.46.0
-hf_transfer==0.1.9
-lpips==0.1.4
-pytorch_fid==0.3.0
-optimum-quanto==0.2.4
-sentencepiece==0.2.0
-huggingface_hub==0.32.6
-peft==0.15.2
-gradio==5.33.1
-python-slugify==8.0.4
-opencv-python==4.11.0.86
-pytorch-wavelets==1.3.0
-matplotlib==3.10.1
-triton-windows==3.3.1.post19
+echo torchao==0.10.0
+echo safetensors==0.5.3
+echo git+https://github.com/jaretburkett/easy_dwpose.git
+echo transformers==4.57.3
+echo lycoris-lora==1.8.3
+echo flatten_json==0.1.14
+echo pyyaml==6.0.2
+echo oyaml==1.0
+echo tensorboard==2.19.0
+echo kornia==0.8.1
+echo invisible-watermark==0.2.0
+echo einops==0.8.1
+echo accelerate==1.12.0
+echo toml==0.10.2
+echo albumentations==1.4.15
+echo albucore==0.0.16
+echo pydantic==2.11.5
+echo omegaconf==2.3.0
+echo k-diffusion==0.1.1.post1
+echo open_clip_torch==2.32.0
+echo timm==1.0.15
+echo diffusers
+echo prodigyopt==1.1.2
+echo controlnet_aux==0.0.10
+echo python-dotenv==1.1.0
+echo bitsandbytes==0.46.0
+echo hf_transfer==0.1.9
+echo lpips==0.1.4
+echo pytorch_fid==0.3.0
+echo optimum-quanto==0.2.4
+echo sentencepiece==0.2.0
+echo huggingface_hub
+echo peft==0.18.0
+echo gradio==5.33.1
+echo python-slugify==8.0.4
+echo opencv-python==4.11.0.86
+echo pytorch-wavelets==1.3.0
+echo matplotlib==3.10.1
+echo triton-windows==3.3.1.post19
 ```
  # We are installing from the requirements
 ```
