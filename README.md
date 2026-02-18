@@ -260,4 +260,111 @@ Activate your virtual environment anytime you want to run the toolkit manually:
 If you encounter errors, fix them before launching the UI. Pip commands can be run with the environment active.
 
 ---
+
+# Linux (Ubuntu) Installer
+
+Bash-based installer for ostris/ai-toolkit
+ — sets up a Python 3.12 virtual environment, installs PyTorch 2.7.1 with CUDA 12.8, and all required dependencies.
+
+✅ Optimized for NVIDIA RTX 50-series GPUs  
+⚙️ Includes installation of all compatible libraries  
+🧪 Automatically pulls the latest ai-toolkit repo and sets it up in one go  
+🚀 Creates start_training.sh automatically so you can start the UI with one command  
+
+---
+
+## Requirements
+
+NVIDIA RTX 50-series GPU
+
+Linux (Ubuntu recommended)
+
+Python 3.12 (you must install it before running the .sh file)
+
+Git installed and available in your system PATH
+
+To verify Python:
+
+```
+python3 --version
+```
+
+## Quick Setup (Linux)
+
+Download or clone this repository into the folder where you'd like to install ai-toolkit.
+
+Navigate into the folder containing:
+```
+linux_setup_ai_toolkit.sh
+```
+Make the installer executable:
+
+```
+chmod +x linux_setup_ai_toolkit.sh
+```
+
+Run the installer:
+
+```
+./linux_setup_ai_toolkit.sh
+```
+
+The script automatically:
+
+Clones the ai-toolkit repository
+
+Creates and activates a Python 3.12 virtual environment
+
+Installs PyTorch 2.7.1 + CUDA 12.8 and all required dependencies
+
+Installs Node.js
+
+Creates start_training.sh inside the folder so you can start the UI easily
+
+Once complete, your environment is ready.
+
+---
+
+## Running the UI (Linux)
+
+Once installed:
+```
+cd ai-toolkit
+./start_training.sh
+```
+
+This script will:
+
+1. Activate your Python virtual environment (venv)
+
+2. Navigate to the ui folder
+
+3. Run the build/start command:
+```
+npm run build_and_start
+```
+
+If everything works right, it should give you a local IP as well as a Network IP. Copy and paste into a browser window.
+
+---
+
+## Notes
+
+The Linux installer replaces any existing requirements.txt with a version compatible with RTX 50-series GPUs.
+
+Activate your virtual environment anytime you want to run the toolkit manually:
+```
+source venv/bin/activate
+cd ui
+npm run build_and_start
+
+```
+
+Otherwise you can just use this file which does the same thing:
+```
+cd ai-toolkit
+./start_training.sh
+```
+
+---
  # Hope this helps someone! :) I just wanted to make someones life easier. 
