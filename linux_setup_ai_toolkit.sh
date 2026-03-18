@@ -129,4 +129,3 @@ echo "Thank you for using my installer! Everything is now local (Python + Node/n
 echo "To start the UI, run:"
 echo "./start_training.sh"
 echo
-
