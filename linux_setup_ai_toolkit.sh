@@ -1,17 +1,51 @@
 #!/bin/bash
 # ============================
 # AI-Toolkit Installer (Linux, Fully Local)
+# Builds Python 3.12.8, installs dependencies, sets up UI
 # ============================
 
 set -e  # Exit immediately if any command fails
 
 # ============================
-# Clone repo and enter folder
+# Variables
 # ============================
-git clone https://github.com/ostris/ai-toolkit.git
-cd ai-toolkit
+PYTHON_VERSION="3.12.8"
+PYTHON_PREFIX="$HOME/python3128"
+AI_TOOLKIT_DIR="$HOME/ai-toolkit"
 
-# Delete existing requirements.txt if it exists
+# ============================
+# Install build dependencies
+# ============================
+sudo apt update
+sudo apt install -y build-essential wget libssl-dev zlib1g-dev \
+    libncurses5-dev libncursesw5-dev libreadline-dev libsqlite3-dev \
+    libgdbm-dev libdb5.3-dev libbz2-dev libexpat1-dev liblzma-dev \
+    tk-dev libffi-dev uuid-dev curl git
+
+# ============================
+# Download and build Python 3.12.8
+# ============================
+mkdir -p "$HOME/src"
+cd "$HOME/src"
+wget https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz
+tar xvf Python-$PYTHON_VERSION.tgz
+cd Python-$PYTHON_VERSION
+./configure --prefix="$PYTHON_PREFIX" --enable-optimizations --with-ensurepip=install
+make -j$(nproc)
+make install
+
+# ============================
+# Confirm python binary
+# ============================
+$PYTHON_PREFIX/bin/python3.12 --version
+
+# ============================
+# Clone AI Toolkit repo
+# ============================
+git clone https://github.com/ostris/ai-toolkit.git "$AI_TOOLKIT_DIR"
+cd "$AI_TOOLKIT_DIR"
+
+# Remove existing requirements.txt
 rm -f requirements.txt
 
 # ============================
@@ -60,39 +94,40 @@ triton
 EOF
 
 # ============================
-# Create Python virtual environment
+# Create virtual environment with Python 3.12.8
 # ============================
-python3 -m venv venv
-
-# Activate the virtual environment
+$PYTHON_PREFIX/bin/python3.12 -m venv venv
 source venv/bin/activate
 
-# Upgrade pip, setuptools, wheel
-pip install --upgrade pip setuptools wheel
+# ============================
+# Force setuptools <82 so pkg_resources works
+# ============================
+python -m pip install --upgrade pip
+python -m pip install --upgrade --force-reinstall "setuptools<82" wheel
+
+# ============================
+# Verify pkg_resources
+# ============================
+python -c "import pkg_resources; print('pkg_resources works ✅')"
 
 # ============================
 # Install Python dependencies
 # ============================
 # Torch with CUDA 12.8
-pip install --no-cache-dir torch==2.7.1+cu128 torchvision==0.22.1+cu128 torchaudio==2.7.1+cu128 --index-url https://download.pytorch.org/whl/cu128
+python -m pip install --no-cache-dir torch==2.7.1+cu128 torchvision==0.22.1+cu128 torchaudio==2.7.1+cu128 --index-url https://download.pytorch.org/whl/cu128
 
 # Install rest of requirements
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 
 # Upgrade diffusers from GitHub
-pip install --upgrade git+https://github.com/huggingface/diffusers.git
+python -m pip install --upgrade git+https://github.com/huggingface/diffusers.git
 
 # ============================
-# Install Node/npm locally inside venv using nvm
+# Install Node/npm locally via nvm
 # ============================
-# Download and install nvm (Node Version Manager)
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.6/install.sh | bash
-
-# Load nvm in current shell
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-# Install Node.js version 20 locally
 nvm install 20
 nvm use 20
 
@@ -101,19 +136,13 @@ nvm use 20
 # ============================
 cat > start_training.sh <<EOL
 #!/bin/bash
-# Activate Python venv
 source venv/bin/activate
-
-# Load nvm and Node
 export NVM_DIR="\$HOME/.nvm"
 [ -s "\$NVM_DIR/nvm.sh" ] && \. "\$NVM_DIR/nvm.sh"
 nvm use 20
-
-# Go into UI folder and start UI
 cd ui
 npm run build_and_start
 EOL
-
 chmod +x start_training.sh
 
 # ============================
@@ -125,7 +154,9 @@ mkdir -p datasets
 # Final message
 # ============================
 echo
-echo "Thank you for using my installer! Everything is now local (Python + Node/npm)."
+echo "Python 3.12.8 installed at $PYTHON_PREFIX"
+echo "Virtual environment created in $AI_TOOLKIT_DIR/venv"
+echo "pkg_resources works ✅ inside the venv"
 echo "To start the UI, run:"
 echo "./start_training.sh"
 echo
