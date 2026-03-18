@@ -111,6 +111,13 @@ python -m pip install --upgrade --force-reinstall "setuptools<82" wheel
 python -c "import pkg_resources; print('pkg_resources works ✅')"
 
 # ============================
+# Install FFmpeg dev libraries and PyAV (Linux)
+# ============================
+sudo apt update
+sudo apt install -y ffmpeg libavcodec-dev libavformat-dev libavdevice-dev libavutil-dev
+python -m pip install av
+
+# ============================
 # Install Python dependencies
 # ============================
 # Torch with CUDA 12.8
@@ -157,6 +164,7 @@ echo
 echo "Python 3.12.8 installed at $PYTHON_PREFIX"
 echo "Virtual environment created in $AI_TOOLKIT_DIR/venv"
 echo "pkg_resources works ✅ inside the venv"
+echo "PyAV installed with FFmpeg ✅"
 echo "To start the UI, run:"
 echo "./start_training.sh"
 echo
