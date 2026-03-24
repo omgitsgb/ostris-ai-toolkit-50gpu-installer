@@ -34,6 +34,7 @@ echo k-diffusion==0.1.1.post1
 echo open_clip_torch==2.32.0
 echo timm==1.0.15
 echo diffusers
+echo av
 echo prodigyopt==1.1.2
 echo controlnet_aux==0.0.10
 echo python-dotenv==1.1.0
