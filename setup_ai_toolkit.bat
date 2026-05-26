@@ -15,7 +15,8 @@ REM Create new requirements.txt with required versions
 echo torchao==0.10.0
 echo safetensors==0.5.3
 echo git+https://github.com/jaretburkett/easy_dwpose.git
-echo transformers==4.57.3
+echo transformers==5.2.0
+echo librosa
 echo lycoris-lora==1.8.3
 echo flatten_json==0.1.14
 echo pyyaml==6.0.2
